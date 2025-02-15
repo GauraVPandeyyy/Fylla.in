@@ -1,0 +1,784 @@
+// Light Mode Default
+:root {
+    --bg: #fff;
+    --text-color: #000;
+    --para-color: rgb(92, 91, 91);
+    --line-bg-color: #000;
+    --btn-bg-color: #000;
+    --btn-text-color: #fff;
+    --border-color: #000;
+}
+
+// Dark Mode using .dark-mode class
+.dark-mode {
+    --bg: #000;
+    --text-color: #fff;
+    --para-color: rgb(228, 226, 226);
+    --line-bg-color: #fff;
+    --btn-bg-color: #fff;
+    --btn-text-color: #000;
+    --border-color: #fff;
+}
+
+img {
+    filter: none;
+}
+
+body.dark-mode img {
+    filter: invert(1) grayscale(100%) contrast(100%);
+}
+
+body.dark-mode .bgiMAGE {
+    filter: none;
+}
+
+
+@mixin para1 {
+    font-size: 1rem;
+    color: var(--para-color);
+    text-transform: uppercase;
+
+}
+
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@mixin button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    font-weight: 500;
+    border-radius: 0.5rem;
+    width: fit-content;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}
+
+@mixin a {
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+
+    &:hover::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        background-color: var(--border-color);
+        left: 0;
+        animation-name: lineanime;
+        animation-duration: 1.5s;
+    }
+}
+    @keyframes lineanime {
+        0% {
+            width: 0%;
+            left: 0;
+        }
+
+        50% {
+            width: 100%;
+            left: 0%;
+        }
+
+        100% {
+            width: 0%;
+            left: 100%;
+        }
+    }
+
+    @mixin line {
+        height: 1px;
+        width: 100%;
+        background-color: var(--line-bg-color);
+        margin-block: 2rem;
+    }
+
+    @mixin hover-contact {
+        @include a;
+        padding: 0.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        margin-right: 1rem;
+        transition: all 0.3s ease;
+        animation: none;
+        &:hover {
+            background-color: var(--btn-bg-color);
+            color: var(--btn-text-color);
+            
+        }
+        &::after {
+            width: 0 !important;  /* Prevent the line animation */
+            left: 50% !important; /* Prevent the line from shifting */
+          }
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Syne", serif;
+    }
+
+    body {
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--bg);
+        color: var(--text-color);
+        transition: background-color 0.9s, color 0.9s;
+        // @include theme($bg , $textColor , $para1Color , $lineBgColor , $btnBgColor , $btnTextColor);
+    }
+
+    main {
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        position: relative;
+    }
+
+    .navbar-popup {
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: calc(100% - 2rem);
+        background-color: var(--bg);
+        top: 92px;
+        left: -100%;
+        margin: 1rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+
+        a {
+            @include a;
+            margin: 0;
+            padding: 0;
+            width: fit-content;
+        }
+
+        .line {
+            @include line;
+            margin-inline: 0;
+            margin-block: 0.8rem;
+        }
+
+        button {
+            @include button;
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
+
+    .show {
+        left: 0;
+        opacity: 1;
+    }
+
+    
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .nav-left {
+            img {
+                width: 3rem;
+            }
+
+            a {
+                @include a;
+                font-size: 2.5rem;
+                margin-left: 1rem;
+                cursor: pointer;
+            }
+        }
+
+        .nav-right {
+            .first {
+                display: none;
+            }
+
+            .second {
+                a {
+                    display: none;
+                }
+
+                button {
+                    display: none;
+                }
+
+                .line {
+                    display: none;
+                }
+
+                i {
+                    font-size: 2rem;
+                    // font-weight: 400;
+                    margin-inline: 0.7rem;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+
+    .view-1 {
+        @include flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .v1-top {
+            p {
+                @include para1
+            }
+
+            h1 {
+                font-size: 3.5rem;
+                font-weight: 400;
+            }
+        }
+
+        .v1-bottom {
+            img {
+                width: 100%;
+                object-fit: contain;
+                object-position: center;
+                border-radius: 2rem;
+                filter: none;
+            }
+        }
+    }
+
+    .view-2 {
+        display: flex;
+        // align-items: center;
+        flex-direction: column;
+        row-gap: 2rem;
+
+        .v2-top {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+            // justify-content: space-between;
+
+            .text {
+                p {
+                    @include para1
+                }
+
+                h1 {
+                    font-size: 3rem;
+                    font-weight: 300;
+                }
+            }
+
+            button {
+                @include button;
+            }
+
+        }
+
+        .line {
+            width: 100%;
+            height: 1px;
+            background-color: black;
+        }
+
+        .v2-bottom {
+
+            .elem {
+
+                .svgContainer {
+                    img {
+                        color: red;
+                        width: 4rem;
+                    }
+                }
+
+                h3 {
+                    margin-block: 0.5rem;
+                    font-size: 3rem;
+                    font-weight: 300;
+                }
+
+                p {
+                    font-size: 1.3rem;
+                    line-height: 2rem;
+                    font-weight: lighter;
+                }
+            }
+
+            .lines {
+                @include line;
+            }
+        }
+    }
+
+    .line {
+        @include line;
+    }
+
+    .view-3 {
+        margin-block: 2rem;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        // gap: 2rem;
+        .v3-top {
+            width: 100%;
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 100;
+            }
+
+            p {
+                font-size: 1.3rem;
+                font-weight: 100;
+            }
+        }
+
+        .line {
+            @include line;
+        }
+
+        .v3-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .card {
+                video {
+                    width: 100%;
+                    height: 16rem;
+                    object-fit: cover;
+                    border-radius: 1rem;
+                }
+
+                h2 {
+                    font-weight: 300;
+                }
+
+                p {
+                    font-weight: 200;
+                }
+
+            }
+        }
+    }
+
+    .view-4 {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .v4-top {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .first {
+                img {
+                    width: 4rem;
+                }
+            }
+
+            .second {
+                p {
+                    @include para1;
+                    margin-bottom: 1rem;
+                }
+
+                h1 {
+                    font-size: 3.5rem;
+                    font-weight: 100;
+                    line-height: 3.4rem;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .line {
+            display: none;
+        }
+
+        .v4-bottom {
+            p {
+                font-size: 1.5rem;
+                letter-spacing: 0.1rem;
+                padding-bottom: 2.5rem;
+            }
+
+            button {
+                @include button;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+    }
+
+
+
+    .view-5 {
+        @include flex;
+        gap: 1rem;
+
+        .v5-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2rem;
+
+            .first {
+                img {
+                    width: 4rem;
+                }
+
+                a {
+                    @include a;
+                    font-size: 3rem;
+                    margin-left: 1rem;
+                    cursor: pointer;
+                }
+
+                p {
+                    font-size: 1.7rem;
+                    margin-top: 1.2rem;
+                }
+            }
+
+            .second {
+                a {
+                    @include hover-contact;
+
+                }
+            }
+        }
+
+        .v5-bottom {
+            @include flex;
+
+            // gap: 2rem;
+            .template {
+                h2 {
+                    font-size: 2.6rem;
+                    font-weight: 100;
+                    margin-bottom: 1rem;
+                }
+
+                ol>li {
+                    list-style: none;
+                    color: black;
+                    font-size: 1.2rem;
+                    margin-block: 0.5rem;
+                    text-transform: uppercase;
+
+                    a {
+                        @include a;
+                    }
+                }
+
+                button {
+                    @include button;
+                    margin-top: 1rem;
+                }
+            }
+        }
+
+
+    }
+
+    footer {
+        @include flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 1.5rem;
+
+        a {
+            @include a;
+        }
+    }
+
+
+    @media (min-width: 1020px) {
+
+        nav {
+            .nav-right {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+
+                .first {
+                    display: inline;
+
+                    a {
+                        @include a;
+                        font-size: 1.3rem;
+                        padding-right: 0.5rem;
+                    }
+                }
+
+                .second {
+                    i:last-child {
+                        display: none;
+                    }
+
+                    .nav-icon {
+                        display: none !important;
+                    }
+                }
+
+            }
+        }
+
+        .view-1 {
+            .v1-top {
+                h1 {
+                    font-size: 6rem;
+                    font-weight: 100;
+                    // background-color: yellow;
+                }
+            }
+        }
+
+        .view-2 {
+            margin-block: 4rem;
+            flex-direction: row;
+            justify-content: space-between;
+
+            // align-items: center;
+            // row-gap: 2rem;
+            .v2-top {
+                justify-content: space-between;
+
+                width: 56%;
+
+                .text {
+                    p {
+                        @include para1;
+                    }
+
+                    h1 {
+                        margin-top: 2rem;
+                        font-size: 5.5rem;
+                        font-weight: 100;
+                        line-height: 4.8rem;
+                    }
+                }
+
+            }
+
+            .line {
+                width: 1px;
+                height: inherit;
+                background-color: black;
+                padding: 0;
+                margin: 0;
+            }
+
+            .v2-bottom {
+                width: 35%;
+
+                .elem {
+                    .svgContainer {
+                        img {
+                            width: 3rem;
+                        }
+                    }
+
+                    p {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+                }
+            }
+        }
+
+        .view-3 {
+
+            .v3-bottom {
+
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2rem;
+
+                .card {
+                    width: 47%;
+
+                    video {
+                        width: 100%;
+                    }
+
+                }
+            }
+        }
+
+        .view-4 {
+            flex-direction: row;
+            justify-content: space-between;
+
+            .v4-top {
+                width: 60%;
+                flex-direction: column-reverse;
+
+                .second {
+                    margin-bottom: 10rem;
+                }
+            }
+
+            .line {
+                display: block;
+                width: 1px;
+                height: inherit;
+                background-color: black;
+                padding: 0;
+                margin: 0;
+            }
+
+            .v4-bottom {
+                width: 35%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .view-5 {
+            .v5-bottom {
+                flex-direction: row;
+
+                .line {
+                    display: none;
+                }
+            }
+
+        }
+
+        .line {
+            @include line;
+        }
+
+    }
+
+
+    @media (min-width: 810px) {
+
+        main {
+            padding: 1rem 3rem;
+        }
+
+        .navbar-popup {
+            top: 110px;
+            left: 2rem;
+            width: calc(100% - 6rem);
+        }
+
+        nav {
+            .nav-right {
+
+                .second {
+                    display: flex;
+                    // gap: 1rem;
+                    align-items: center;
+
+                    // justify-content: center;
+                    button {
+                        display: inline;
+                        @include button;
+                        padding: 0.4rem 1rem;
+                    }
+
+                    a {
+                        display: inline;
+                        @include hover-contact;
+                    }
+
+                    .line {
+                        display: inline;
+                        margin-inline: 1rem;
+                        width: 1px;
+                        // @include line;
+                        height: 2.4rem;
+                    }
+
+                    i {
+                        margin: 0;
+                    }
+
+                }
+            }
+        }
+
+        .view-3 {
+            flex-direction: row;
+
+            .v3-top {
+                width: 36%;
+                position: relative;
+                .stick {
+                    position: sticky;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    // background: navy;
+                }
+            }
+
+            .v3-bottom {
+                width: 62%;
+            }
+
+            .line {
+                width: 1px;
+                height: inherit;
+                background-color: black;
+                margin-inline: 2rem;
+                margin-block: 0;
+            }
+        }
+
+        .view-5 {
+            flex-direction: row;
+
+            .v5-top {
+                width: 35%;
+            }
+
+            .v5-bottom {
+                width: 63%;
+
+                .line {
+                    @include line;
+                    margin-inline: 0;
+                }
+            }
+
+            .line {
+                width: 1px;
+                height: inherit;
+                background-color: black;
+                margin-inline: 2rem;
+                margin-block: 0;
+            }
+        }
+
+
+        footer {
+            flex-direction: row;
+        }
+    }

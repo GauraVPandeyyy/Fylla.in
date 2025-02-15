@@ -1,0 +1,740 @@
+:root {
+  --bg: #fff;
+  --text-color: #000;
+  --para-color: rgb(92, 91, 91);
+  --line-bg-color: #000;
+  --btn-bg-color: #000;
+  --btn-text-color: #fff;
+  --border-color: #000;
+}
+
+.dark-mode {
+  --bg: #000;
+  --text-color: #fff;
+  --para-color: rgb(228, 226, 226);
+  --line-bg-color: #fff;
+  --btn-bg-color: #fff;
+  --btn-text-color: #000;
+  --border-color: #fff;
+}
+
+img {
+  filter: none;
+}
+
+body.dark-mode img {
+  filter: invert(1) grayscale(100%) contrast(100%);
+}
+
+body.dark-mode .bgiMAGE {
+  filter: none;
+}
+
+@keyframes lineanime {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Syne", serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--bg);
+  color: var(--text-color);
+  transition: background-color 0.9s, color 0.9s;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.navbar-popup {
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: calc(100% - 2rem);
+  background-color: var(--bg);
+  top: 92px;
+  left: -100%;
+  margin: 1rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.navbar-popup a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.navbar-popup a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+.navbar-popup .line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--line-bg-color);
+  margin-block: 2rem;
+  margin-inline: 0;
+  margin-block: 0.8rem;
+}
+.navbar-popup button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.show {
+  left: 0;
+  opacity: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .nav-left img {
+  width: 3rem;
+}
+nav .nav-left a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+  font-size: 2.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+nav .nav-left a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+nav .nav-right .first {
+  display: none;
+}
+nav .nav-right .second a {
+  display: none;
+}
+nav .nav-right .second button {
+  display: none;
+}
+nav .nav-right .second .line {
+  display: none;
+}
+nav .nav-right .second i {
+  font-size: 2rem;
+  margin-inline: 0.7rem;
+  cursor: pointer;
+}
+
+.view-1 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-direction: column;
+  gap: 2rem;
+}
+.view-1 .v1-top p {
+  font-size: 1rem;
+  color: var(--para-color);
+  text-transform: uppercase;
+}
+.view-1 .v1-top h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+.view-1 .v1-bottom img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 2rem;
+  filter: none;
+}
+
+.view-2 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+.view-2 .v2-top {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+.view-2 .v2-top .text p {
+  font-size: 1rem;
+  color: var(--para-color);
+  text-transform: uppercase;
+}
+.view-2 .v2-top .text h1 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+.view-2 .v2-top button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.view-2 .line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
+.view-2 .v2-bottom .elem .svgContainer img {
+  color: red;
+  width: 4rem;
+}
+.view-2 .v2-bottom .elem h3 {
+  margin-block: 0.5rem;
+  font-size: 3rem;
+  font-weight: 300;
+}
+.view-2 .v2-bottom .elem p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: lighter;
+}
+.view-2 .v2-bottom .lines {
+  height: 1px;
+  width: 100%;
+  background-color: var(--line-bg-color);
+  margin-block: 2rem;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--line-bg-color);
+  margin-block: 2rem;
+}
+
+.view-3 {
+  margin-block: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.view-3 .v3-top {
+  width: 100%;
+}
+.view-3 .v3-top h1 {
+  font-size: 3rem;
+  font-weight: 100;
+}
+.view-3 .v3-top p {
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+.view-3 .line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--line-bg-color);
+  margin-block: 2rem;
+}
+.view-3 .v3-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.view-3 .v3-bottom .card video {
+  width: 100%;
+  height: 16rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+.view-3 .v3-bottom .card h2 {
+  font-weight: 300;
+}
+.view-3 .v3-bottom .card p {
+  font-weight: 200;
+}
+
+.view-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.view-4 .v4-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.view-4 .v4-top .first img {
+  width: 4rem;
+}
+.view-4 .v4-top .second p {
+  font-size: 1rem;
+  color: var(--para-color);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.view-4 .v4-top .second h1 {
+  font-size: 3.5rem;
+  font-weight: 100;
+  line-height: 3.4rem;
+  text-transform: uppercase;
+}
+.view-4 .line {
+  display: none;
+}
+.view-4 .v4-bottom p {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  padding-bottom: 2.5rem;
+}
+.view-4 .v4-bottom button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.8rem 1.2rem;
+}
+
+.view-5 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+}
+.view-5 .v5-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.view-5 .v5-top .first img {
+  width: 4rem;
+}
+.view-5 .v5-top .first a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+  font-size: 3rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.view-5 .v5-top .first a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+.view-5 .v5-top .first p {
+  font-size: 1.7rem;
+  margin-top: 1.2rem;
+}
+.view-5 .v5-top .second a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  animation: none;
+}
+.view-5 .v5-top .second a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+.view-5 .v5-top .second a:hover {
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+}
+.view-5 .v5-top .second a::after {
+  width: 0 !important; /* Prevent the line animation */
+  left: 50% !important; /* Prevent the line from shifting */
+}
+.view-5 .v5-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.view-5 .v5-bottom .template h2 {
+  font-size: 2.6rem;
+  font-weight: 100;
+  margin-bottom: 1rem;
+}
+.view-5 .v5-bottom .template ol > li {
+  list-style: none;
+  color: black;
+  font-size: 1.2rem;
+  margin-block: 0.5rem;
+  text-transform: uppercase;
+}
+.view-5 .v5-bottom .template ol > li a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+}
+.view-5 .v5-bottom .template ol > li a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+.view-5 .v5-bottom .template button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.5rem;
+}
+footer a {
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
+}
+footer a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: var(--border-color);
+  left: 0;
+  animation-name: lineanime;
+  animation-duration: 1.5s;
+}
+
+@media (min-width: 1020px) {
+  nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  nav .nav-right .first {
+    display: inline;
+  }
+  nav .nav-right .first a {
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    font-size: 1.3rem;
+    padding-right: 0.5rem;
+  }
+  nav .nav-right .first a:hover::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    background-color: var(--border-color);
+    left: 0;
+    animation-name: lineanime;
+    animation-duration: 1.5s;
+  }
+  nav .nav-right .second i:last-child {
+    display: none;
+  }
+  nav .nav-right .second .nav-icon {
+    display: none !important;
+  }
+  .view-1 .v1-top h1 {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+  .view-2 {
+    margin-block: 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .view-2 .v2-top {
+    justify-content: space-between;
+    width: 56%;
+  }
+  .view-2 .v2-top .text p {
+    font-size: 1rem;
+    color: var(--para-color);
+    text-transform: uppercase;
+  }
+  .view-2 .v2-top .text h1 {
+    margin-top: 2rem;
+    font-size: 5.5rem;
+    font-weight: 100;
+    line-height: 4.8rem;
+  }
+  .view-2 .line {
+    width: 1px;
+    height: inherit;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+  }
+  .view-2 .v2-bottom {
+    width: 35%;
+  }
+  .view-2 .v2-bottom .elem .svgContainer img {
+    width: 3rem;
+  }
+  .view-2 .v2-bottom .elem p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .view-3 .v3-bottom {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .view-3 .v3-bottom .card {
+    width: 47%;
+  }
+  .view-3 .v3-bottom .card video {
+    width: 100%;
+  }
+  .view-4 {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .view-4 .v4-top {
+    width: 60%;
+    flex-direction: column-reverse;
+  }
+  .view-4 .v4-top .second {
+    margin-bottom: 10rem;
+  }
+  .view-4 .line {
+    display: block;
+    width: 1px;
+    height: inherit;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+  }
+  .view-4 .v4-bottom {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .view-4 .v4-bottom p {
+    font-size: 1.5rem;
+  }
+  .view-5 .v5-bottom {
+    flex-direction: row;
+  }
+  .view-5 .v5-bottom .line {
+    display: none;
+  }
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--line-bg-color);
+    margin-block: 2rem;
+  }
+}
+@media (min-width: 810px) {
+  main {
+    padding: 1rem 3rem;
+  }
+  .navbar-popup {
+    top: 110px;
+    left: 2rem;
+    width: calc(100% - 6rem);
+  }
+  nav .nav-right .second {
+    display: flex;
+    align-items: center;
+  }
+  nav .nav-right .second button {
+    display: inline;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    font-weight: 500;
+    border-radius: 0.5rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+  }
+  nav .nav-right .second a {
+    display: inline;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    animation: none;
+  }
+  nav .nav-right .second a:hover::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    background-color: var(--border-color);
+    left: 0;
+    animation-name: lineanime;
+    animation-duration: 1.5s;
+  }
+  nav .nav-right .second a:hover {
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+  }
+  nav .nav-right .second a::after {
+    width: 0 !important; /* Prevent the line animation */
+    left: 50% !important; /* Prevent the line from shifting */
+  }
+  nav .nav-right .second .line {
+    display: inline;
+    margin-inline: 1rem;
+    width: 1px;
+    height: 2.4rem;
+  }
+  nav .nav-right .second i {
+    margin: 0;
+  }
+  .view-3 {
+    flex-direction: row;
+  }
+  .view-3 .v3-top {
+    width: 36%;
+    position: relative;
+  }
+  .view-3 .v3-top .stick {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .view-3 .v3-bottom {
+    width: 62%;
+  }
+  .view-3 .line {
+    width: 1px;
+    height: inherit;
+    background-color: black;
+    margin-inline: 2rem;
+    margin-block: 0;
+  }
+  .view-5 {
+    flex-direction: row;
+  }
+  .view-5 .v5-top {
+    width: 35%;
+  }
+  .view-5 .v5-bottom {
+    width: 63%;
+  }
+  .view-5 .v5-bottom .line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--line-bg-color);
+    margin-block: 2rem;
+    margin-inline: 0;
+  }
+  .view-5 .line {
+    width: 1px;
+    height: inherit;
+    background-color: black;
+    margin-inline: 2rem;
+    margin-block: 0;
+  }
+  footer {
+    flex-direction: row;
+  }
+}/*# sourceMappingURL=style.css.map */
